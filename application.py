@@ -16,11 +16,13 @@ import bcrypt
 #from apps import App
 from flask_login import LoginManager, login_required
 from bson.objectid import ObjectId
+import database
 
 app = Flask(__name__)
 app.secret_key = 'secret'
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/test'
-mongo = PyMongo(app)
+#app.config['MONGO_URI'] = 'mongodb+srv://wolfjobs:W00FW00F@cluster0.uj4oftq.mongodb.net/?retryWrites=true&w=majority'
+#mongo = PyMongo(app)
+mongo = database
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
@@ -69,7 +71,7 @@ def register():
                 username = request.form.get('username')
                 email = request.form.get('email')
                 password = request.form.get('password')
-                id = mongo.db.ath.insert({'name': username, 'email': email, 'pwd': bcrypt.hashpw(
+                id = mongo.db.ath.insert_one({'name': username, 'email': email, 'pwd': bcrypt.hashpw(
                     password.encode("utf-8"), bcrypt.gensalt()), 'temp': None})
             flash(f'Account created for {form.username.data}!', 'success')
             return redirect(url_for('home'))
@@ -186,7 +188,7 @@ def posting():
             salary = form.salary.data
             rewards = form.rewards.data
 
-            id = mongo.db.jobs.insert({'email': email,
+            id = mongo.db.jobs.insert_one({'email': email,
                                        'designation': designation,
                                        'job_title': job_title,
                                        'job_description': job_description,
@@ -231,7 +233,7 @@ def applying():
             availability = form.availability.data
             schedule = form.schedule.data
 
-            id = mongo.db.applier.insert({'name': name,
+            id = mongo.db.applier.insert_one({'name': name,
                                           'email': email,
                                           'phone': phone,
                                           'apply_address': apply_address,
@@ -332,7 +334,7 @@ def jobDetails():
             skills = request.form.get('skills')
             availability = request.form.get('availability')
             schedule = request.form.get('schedule')
-            id = mongo.db.applier.insert(
+            id = mongo.db.applier.insert_one(
                 {
                     'job_id': ObjectId(job_id),
                     'email': email,
@@ -343,7 +345,7 @@ def jobDetails():
                     'skills': skills,
                     'availability': availability,
                     'schedule': schedule})
-            mongo.db.jobs.update({'_id': ObjectId(job_id)}, {
+            mongo.db.jobs.update_one({'_id': ObjectId(job_id)}, {
                                  '$push': {'Appliers': session['email']}})
         flash('Successfully Applied to the job!', 'success')
         return redirect(url_for('dashboard'))
@@ -391,7 +393,7 @@ def selectApplicant():
     job_id = request.args.get("job_id")
     applicant_id = request.args.get("applicant_id")
     print(job_id, applicant_id)
-    mongo.db.jobs.update({'_id': ObjectId(job_id)}, {
+    mongo.db.jobs.update_one({'_id': ObjectId(job_id)}, {
                          '$set': {"selected": applicant_id}})
     return redirect(url_for('dashboard'))
 
