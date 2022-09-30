@@ -25,6 +25,8 @@
                                             <p class="card-content">{{ job.job_description }}</p>
                                             <p class="card-content"><b>Location:</b> {{ job.job_location }}</p>
                                             <p class="card-content"><b>Designation:</b> {{ job.designation }}</p>
+                                            <p class="card-content"><b>Type:</b> {{ job.job_type }}</p>
+                                            <p class="card-content"><b>Industry:</b> {{ job.industry }}</p>
                                         </div>
                                         <div class="card back">
                                             <p class="card-content" style="text-align:left; font-size:30px; margin-top:10px;">{{ job.job_title }}</a>
@@ -37,12 +39,10 @@
                                             <p class="card-content"><b>Rewards: </b> {{ job.rewards }}</p>
                                             <button type="button " class="btn btn-outline-dark" style="max-width:100px; margin:5px;"><a style="color:inherit" href="{{url_for('jobDetails',job_id=job._id)}}">View Job</a></button>
                                         </div>
-                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
-                         
                         {% endfor %}
                     {% endif %}
                 </div>
@@ -69,6 +69,44 @@
                         </article>
                     {% else %}
                         <h3>Jobs Available</h3><br>
+                        <form method="GET" action="">
+                            <l>Search With Key Word:</l>
+                            <l><input type="text" class="btn btn-outline-info" name="keyword"><br><l>
+                            <p></p>
+                            <l><label for="location">Job Location</label>
+                                <select name="location" class="btn btn-outline-info" id="location">
+                                    <option value="all">ALL</option>
+                                    <option value="Raleigh">Raleigh</option>
+                                    <option value="San Jose">San Jose</option>
+                                    <option value="New York">New York</option>
+                                    <option value="others">Others</option>
+                                </select><br>
+                            </l>
+                            <p></p>
+                            <l>
+                                <label for="type">Job Type</label>
+                                <select name="type" class="btn btn-outline-info" id="type">
+                                <option value="all">ALL</option>
+                                <option value="Full Time">Full Time</option>
+                                <option value="Part Time">Part Time</option>
+                                <option value="Internship">Internship</option>
+                                <option value="others">Others</option>
+                                </select><br>
+                            </l>
+                            <p></p>
+                            <l><label for="industry">Job Industry</label>
+                                <select name="industry" class="btn btn-outline-info" id="industry">
+                                    <option value="all">ALL</option>
+                                    <option value="Information Technology">Information Technology</option>
+                                    <option value="Accounting">Accounting</option>
+                                    <option value="Business">Business</option>
+                                    <option value="others">Others</option>
+                                </select><br>
+                            </l>
+                            <p></p>
+                            <l><input type="submit" class="btn btn-outline-info" value="search"></l>
+                        </form>
+                       
                         {% for job in jobs %}
                             <div class="container">
                                 <div class="row">
@@ -82,6 +120,8 @@
                                                 <p class="card-content">{{ job.job_description }}</p>
                                                 <p class="card-content"><b>Location:</b> {{ job.job_location }}</p>
                                                 <p class="card-content"><b>Designation:</b> {{ job.designation }}</p>
+                                                <p class="card-content"><b>Type:</b> {{ job.job_type }}</p>
+                                                <p class="card-content"><b>Industry:</b> {{ job.industry }}</p>
                                             </div>
                                             <div class="card back">
                                                 <p class="card-content" style="text-align:left; font-size:30px; margin-top:10px;">{{ job.job_title }}</a>
