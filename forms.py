@@ -46,10 +46,19 @@ class PostingForm(FlaskForm):
                 min=2, max=20)])
     job_title = StringField('Job Title: ',
                             validators=[DataRequired()])
-    job_location = StringField('Job Location: ',
-                               validators=[DataRequired()])
+    # job_location = StringField('Job Location: ',
+    #                            validators=[DataRequired()])
+    job_location = SelectField(
+        'Job Location', choices=[
+            ('Raleigh', "Raleigh"), ("San Jose", "San Jose"), ("New York", "New York"), ("Others", "Others")])
     job_description = StringField('Job Description: ',
                                   validators=[DataRequired()])
+    job_type = SelectField(
+        'Job Type', choices=[
+            ('Full Time', "Full Time"), ("Part Time", "Part Time"), ("Internship", "Internship"), ("Others", "Others")])
+    industry = SelectField(
+        'Job Type', choices=[
+            ('Information Technology', "Information Technology"), ("Business", "Business"), ("Accounting", "Accounting"), ("Others", "Others")])
     skills = StringField('Skills Required: ',
                          validators=[DataRequired()])
     schedule = StringField('Schedule of the job (in hours): ',

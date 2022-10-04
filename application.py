@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from types import MethodDescriptorType
-from bson.objectid import ObjectId
+# from bson.objectid import ObjectId
 
 from flask_wtf import form
 from utilities import Utilities
@@ -55,6 +55,7 @@ def about():
     return render_template('about.html', title='About')
 
 
+# @app.route("/register", methods=['POST'])
 @app.route("/register", methods=['GET', 'POST'])
 def register():
 # ############################ 
@@ -183,6 +184,8 @@ def posting():
             job_title = form.job_title.data
             job_location = form.job_location.data
             job_description = form.job_description.data
+            job_type = form.job_type.data
+            industry  = form.industry.data
             skills = form.skills.data
             schedule = form.schedule.data
             salary = form.salary.data
@@ -194,6 +197,8 @@ def posting():
                                        'job_description': job_description,
                                        'time_posted': now,
                                        'job_location': job_location,
+                                       'job_type': job_type,
+                                       'industry': industry,
                                        'skills': skills,
                                        'schedule': schedule,
                                        'salary': salary,
@@ -279,7 +284,34 @@ def dashboard():
             else:
                 return render_template('dashboard.html', jobs=get_jobs)
     else:
-        cursor = mongo.db.jobs.find({'email': {'$ne': email}})
+        key_word = ''
+        location = ''
+        job_type = ''
+        industry = ''
+        query_dict = {}
+        query_dict['email'] = {'$ne': email}
+        query_dict['job_title'] = {'$regex': key_word, '$options': 'i'}
+        # query_dict = {'email': {'$ne': email}}
+        if request.args.get('keyword'):
+            key_word = '.*' + request.args.get('keyword') + '.*'
+            query_dict['job_title'] = {'$regex': key_word, '$options': 'i'}
+        
+        if request.args.get('location'):
+            location = request.args.get('location')
+            if location != 'all':
+                query_dict['job_location'] = {'$eq' : location}
+        
+        if request.args.get('type'):
+            job_type = request.args.get('type')
+            if job_type != 'all':
+                query_dict['job_type'] = {'$eq' : job_type}
+        
+        if request.args.get('industry'):
+            industry = request.args.get('industry')
+            if industry != 'all':
+                query_dict['industry'] = {'$eq' : industry}
+        
+        cursor = mongo.db.jobs.find(query_dict)
         get_jobs = []
         for record in cursor:
             get_jobs.append(record)

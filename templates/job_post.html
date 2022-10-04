@@ -58,6 +58,32 @@
                     {% endif %}
                 </div>
                 <div class="form-group">
+                    {{ form.job_type.label(class="form-control-label") }}
+                    {% if form.job_type.errors %}
+                        {{ form.job_type(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.job_type.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.job_type(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.industry.label(class="form-control-label") }}
+                    {% if form.industry.errors %}
+                        {{ form.industry(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.industry.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.industry(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
                     {{ form.skills.label(class="form-control-label") }}
                     {% if form.skills.errors %}
                         {{ form.skills(class="form-control form-control-lg is-invalid") }}
