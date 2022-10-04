@@ -1,7 +1,21 @@
 {% extends "layout.html" %}
 {% block content %}
-
     {% if session.get('login_type') == 'Manager' %}
+        <script type="text/javascript">
+            $(function() {
+                $(".appliers").click(function() {
+                    var keyValue = $(this).attr('id').split(' ');
+                    var sendData = {"email": keyValue[0], "job_id": keyValue[1], "status": 1};
+                    $.ajax({
+                        type: "POST",
+                        url: "/changeJobStatus",
+                        data: JSON.stringify(sendData),
+                        contentType: "application/json",
+                        dataType: 'json'
+                    })
+                });
+            });
+        </script>
         <div class="container">
             <div class="row">
                 <div class="col-10">
@@ -23,16 +37,17 @@
                             <details>
                                 <summary>Appliers</summary>
                                 {% for record in applicant %}
-                                    <details style="margin: 5px; background:white;">
+                                    <details style="margin: 5px; background:white;" class="appliers" id="{{record.email_jobid}}">
                                         <summary>{{record.name}}</summary>
                                         <p class="article-content">Email ID: {{record.email}}</p>
                                         <p class="article-content">Phone: {{record.phone}}</p>
                                         <p class="article-content">Address: {{record.address}}</p>
-                                        <p class="article-content">Date of Birth: {{str(record.dob)}}</p>
+                                        <p class="article-content">Date of Birth: {{record.dob}}</p>
                                         <p class="article-content">Skills: {{record.skills}}</p>
                                         <p class="article-content">Availability: {{record.availability}} hours</p>
                                         <p class="article-content">Schedule: {{record.schedule}}</p>
-                                        <button type="button" class="btn btn-primary"><a style="color:white" href="{{url_for('selectApplicant',job_id=job._id,applicant_id=record._id)}}">Select Applicant</a></button>
+                                        <button type="button" class="btn btn-success accept"><a style="color:white" href="{{url_for('selectApplicant',job_id=job._id,applicant_id=record._id,email=record.email)}}">Accept for interview</a></button>
+                                        <button type="button" class="btn btn-warning reject"><a style="color:white" href="{{url_for('rejectApplicant',job_id=job._id,applicant_id=record._id,email=record.email)}}">Reject</a></button>
                                     </details>
                                 {% endfor %}
                             </details>

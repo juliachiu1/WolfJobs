@@ -257,7 +257,8 @@ def applying():
                                           'time_posted': now,
                                           'availability': availability,
                                           'schedule': schedule,
-                                          'skills': skills})
+                                          'skills': skills,
+                                          'status': 0})
             flash("Job Applied!", 'success')
             return redirect(url_for('dashboard'))
     else:
@@ -379,7 +380,8 @@ def jobDetails():
                     'dob': dob,
                     'skills': skills,
                     'availability': availability,
-                    'schedule': schedule})
+                    'schedule': schedule,
+                    'status': 0})
             mongo.db.jobs.update_one({'_id': ObjectId(job_id)}, {
                                  '$push': {'Appliers': session['email']}})
         flash('Successfully Applied to the job!', 'success')
@@ -403,8 +405,9 @@ def jobDetails():
     else:
         applicant = []
         print(job_id)
-        applicants = mongo.db.applier.find({'job_id': ObjectId(job_id)})
+        applicants = mongo.db.applier.find({'job_id': ObjectId(job_id), 'status': {'$lt': 2}})
         for record in applicants:
+            record['email_jobid']=record['email']+' '+job_id;
             applicant.append(record)
         print(applicant)
         return render_template(
@@ -429,7 +432,7 @@ def deleteJob():
 @app.route("/selectApplicant", methods=['GET', 'POST'])
 def selectApplicant():
 # ############################ 
-# selectApplicant() function performs the functionality of seleting an applicant for a particular job.
+# selectApplicant() function performs the functionality of seleting an applicant for interview.
 # route "/selectApplicant" will redirect to selectApplicant() function.
 # Input value are taken and corresponding to those values set attribute is update to selected in database
 # Input: job_id, applicant_id
@@ -437,10 +440,29 @@ def selectApplicant():
 # ########################## 
     job_id = request.args.get("job_id")
     applicant_id = request.args.get("applicant_id")
-    print(job_id, applicant_id)
+    email=request.args.get("email")
+    print('email: '+email)
+    # print(job_id, applicant_id)
     mongo.db.jobs.update_one({'_id': ObjectId(job_id)}, {
                          '$set': {"selected": applicant_id}})
+    mongo.db.applier.update_one({'email': email, 'job_id': ObjectId(job_id)}, [{'$set': {'status': 2}}])
     return redirect(url_for('dashboard'))
+
+@app.route("/rejectApplicant", methods=['GET', 'POST'])
+def rejectApplicant():
+# ############################ 
+# rejectApplicant() function performs the functionality of rejecting an applicant for a particular job.
+# route "/rejectApplicant" will redirect to rejectApplicant() function.
+# Input value are taken and corresponding to those values set attribute is update to selected in database
+# Input: job_id, applicant_id
+# Output: Applicant is selected (database updated) and page redirected to dashboard
+# ########################## 
+    job_id = request.args.get("job_id")
+    applicant_id = request.args.get("applicant_id")
+    email=request.args.get("email")
+    mongo.db.applier.update_one({'email': email, 'job_id': ObjectId(job_id)}, [{'$set': {'status': 3}}])
+    return redirect(url_for('dashboard'))
+
 
 
 @app.route("/jobsApplied", methods=['GET', 'POST'])
@@ -452,11 +474,20 @@ def jobsApplied():
 # Output: Display of Number of jobs an applicant applied to.
 # ########################## 
     email = session['email']
-    cursor = mongo.db.jobs.find({'Appliers': {'$in': [email]}})
-
+    cursor = mongo.db.applier.find({'email': email}).sort([("status", 1)])
     get_all_jobs = []
     for record in cursor:
-        get_all_jobs.append(record)
+        job = mongo.db.jobs.find_one({'_id': ObjectId(record['job_id'])})
+        if record['status']==0:
+            job['status']='waiting to be reviewed'
+        elif record['status']==1:
+            job['status']='under review'
+        elif record['status']==2:
+            job['status']='accepted to be interviewed'
+        elif record['status']==3:
+            job['status']='rejected'
+        
+        get_all_jobs.append(job)
     if get_all_jobs == []:
         return render_template('jobs_applied.html', status=False)
     else:
@@ -499,6 +530,13 @@ def doSaveOrRemoveJob():
     results = {'isSaved': bool(data['isSave'])}
     return jsonify(results)
 
+@app.route('/changeJobStatus', methods=['POST', 'GET'])
+def changeJobStatus():
+    if request.method == "POST":
+        data = request.get_json()
+        mongo.db.applier.update_one({'email': data['email'], 'job_id': ObjectId(data['job_id'])}, [{'$set': {'status': data['status']}}])
+    results = {'isSuccess': True}
+    return jsonify(results)
 
 @app.route("/dummy", methods=['GET'])
 def dummy():

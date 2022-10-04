@@ -3,11 +3,29 @@
     {% if not status: %}
         <h2>You haven't save any jobs yet!</h2>
     {% else %}
+        <script type="text/javascript">
+            $(function() {
+                $(".saveOrRemoveJobBtn").click(function() {
+                    var btn = $(this);
+                    var sendData = {"isSave": btn.children().hasClass('far'), "job_id": btn.val()};
+                    $.ajax({
+                        type: "POST",
+                        url: "/doSaveOrRemoveJob",
+                        data: JSON.stringify(sendData),
+                        contentType: "application/json",
+                        dataType: 'json',
+                        success: function(result) {
+                            $('#'+btn.val()).remove();
+                        } 
+                    })
+                });
+            });
+        </script>
         <div class="container">
             <div class="col-10">
                 <h2>Saved Jobs</h2>
                 {% for job in jobs %}
-                    <div class="container">
+                    <div class="container" id="{{job._id}}">
                         <div class="row">
                             <div class="col-md-12 card-container">
                                 <div class="card-flip">
@@ -37,6 +55,7 @@
                                     {% else %}
                                         <button class="btn btn-outline-dark" type="button" style="max-width: 350px; margin:10px;"><a style="color:inherit;" href="{{url_for('jobDetails',job_id = job._id)}}">Apply for this position</a></button>
                                     {% endif %}
+                                    <button class="btn btn-light saveOrRemoveJobBtn" type="button" style="max-width: 350px; margin:10px;" value="{{job._id}}"><i class="fas fa-bookmark saveJobIcon"></i> Remove this job from saved list</button>
                                     </div>
                                 </div>
                             </div>
