@@ -11,7 +11,7 @@ from flask.helpers import make_response
 from flask.json import jsonify
 from flask_mail import Mail, Message
 import jwt
-from forms import ForgotPasswordForm, RegistrationForm, LoginForm, ResetPasswordForm, PostingForm, ApplyForm
+from forms import ForgotPasswordForm, RegistrationForm, LoginForm, ResetPasswordForm, PostingForm, ApplyForm, updateProfileForm
 import bcrypt
 #from apps import App
 from flask_login import LoginManager, login_required
@@ -72,8 +72,18 @@ def register():
                 username = request.form.get('username')
                 email = request.form.get('email')
                 password = request.form.get('password')
+
+                name = request.form.get('name')
+                phone = request.form.get('phone')
+                address = request.form.get('address')
+                birth = request.form.get('birth')
+                skills = request.form.get('skills')
+                availability = request.form.get('availability')
+
                 id = mongo.db.ath.insert_one({'name': username, 'email': email, 'pwd': bcrypt.hashpw(
-                    password.encode("utf-8"), bcrypt.gensalt()), 'temp': None})
+                    password.encode("utf-8"), bcrypt.gensalt()), 'temp': None, 'legal_name': name, 
+                    'phone': phone, 'address': address, 'birth': birth, 'skills': skills, 'availability': availability})
+
                 mongo.db.savedJobs.insert_one({'email': email, 'savedJobs': []})
             flash(f'Account created for {form.username.data}!', 'success')
             return redirect(url_for('home'))
@@ -318,22 +328,20 @@ def dashboard():
         for record in cursor:
             for appliers in record['Appliers']:
                 if appliers == email:
-                    record['haveApplied']=True;
+                    record['haveApplied']=True
                     break;
             for job in savedJobs['savedJobs']:
                 if job == str(record['_id']):
                     print('true')
-                    record['haveSaved']=True;
-                    break;
-                
+                    record['haveSaved']=True
+                    break;            
             get_jobs.append(record)
 
         get_jobs = sorted(
             get_jobs,
             key=lambda i: i['time_posted'],
             reverse=True)
-        return render_template('dashboard.html', jobs=get_jobs);
-
+        return render_template('dashboard.html', jobs=get_jobs)
 
 @app.route("/jobDetails", methods=['GET', 'POST'])
 def jobDetails():
@@ -376,7 +384,17 @@ def jobDetails():
                                  '$push': {'Appliers': session['email']}})
         flash('Successfully Applied to the job!', 'success')
         return redirect(url_for('dashboard'))
+
     if login_type == "Applicant":
+
+        # print(applicant, file=sys.stdout)
+        form.apply_address.data = applicant.get('address')
+        form.apply_name.data = applicant.get('legal_name')
+        form.apply_phone.data = applicant.get('phone')
+        form.dob.data = datetime.strptime(applicant.get('birth'),'%Y-%m-%d')
+        form.skills.data = applicant.get('skills')
+        form.availability.data = applicant.get('availability')
+        
         return render_template(
             'job_details.html',
             job=job,
