@@ -12,12 +12,8 @@
                             <small class="text-muted">{{ job.time_posted }}</small>
                             </div>
                             <h2><a class="article-title">{{ job.job_title }}</a></h2>
-                            <p class="article-content">{{ job.job_description }}</p>
                             <p class="article-content"><b>Location:</b> {{ job.job_location }}</p>
-                            <p class="article-content">{{ job.skills }}</p>
-                            <p class="article-content">Schedule: {{ job.schedule }} hours</p>
-                            <p class="article-content">Salary: {{ job.salary }}</p>
-                            <p class="article-content">Rewards: {{ job.rewards }}</p>
+                            <p class="article-content"><b>Status:</b> {{ job.status }}</p>
                         </div>
                     </article>
                 {% endfor %}
