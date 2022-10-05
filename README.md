@@ -3,7 +3,7 @@
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 [![Build Status](https://app.travis-ci.com/atharva1996/WolfJobs.svg?branch=master)](https://app.travis-ci.com/atharva1996/WolfJobs)
 [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
-![Issues](https://img.shields.io/github/issues/atharva1996/wolfjobs)
+[![Issues](https://img.shields.io/github/issues/atharva1996/wolfjobs)](https://img.shields.io/github/issues/Chloe-Ku/WolfJobs)
 ![last commit](https://img.shields.io/github/last-commit/atharva1996/wolfjobs)
 ![total lines](https://img.shields.io/tokei/lines/github/atharva1996/wolfjobs)
 
