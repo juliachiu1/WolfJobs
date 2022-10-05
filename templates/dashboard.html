@@ -91,41 +91,56 @@
                     {% else %}
                         <h3>Jobs Available</h3><br>
                         <form method="GET" action="">
-                            <l>Search With Key Word:</l>
-                            <l><input type="text" class="btn btn-outline-info" name="keyword"><br><l>
+                            <div class="input-group input-group-sm mb-3 col-12">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Search With Key Word</span>
+                                </div>
+                                <input type="text" name="keyword" class="form-control col-4" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                            </div>
                             <p></p>
-                            <l><label for="location">Job Location</label>
-                                <select name="location" class="btn btn-outline-info" id="location">
-                                    <option value="all">ALL</option>
-                                    <option value="Raleigh">Raleigh</option>
-                                    <option value="San Jose">San Jose</option>
-                                    <option value="New York">New York</option>
-                                    <option value="others">Others</option>
-                                </select><br>
-                            </l>
+                            <div class="input-group input-group-sm mb-3 col-12">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text" for="location">Job Location</label>
+                                </div>
+                                <select class="custom-select col-4" id="location" name="location">
+                                  <option value="all">ALL</option>
+                                  <option value="Raleigh">Raleigh</option>
+                                  <option value="San Jose">San Jose</option>
+                                  <option value="New York">New York</option>
+                                  <option value="others">Others</option>
+                                </select>
+                            </div>
                             <p></p>
-                            <l>
-                                <label for="type">Job Type</label>
-                                <select name="type" class="btn btn-outline-info" id="type">
-                                <option value="all">ALL</option>
-                                <option value="Full Time">Full Time</option>
-                                <option value="Part Time">Part Time</option>
-                                <option value="Internship">Internship</option>
-                                <option value="others">Others</option>
-                                </select><br>
-                            </l>
+                            <div class="input-group input-group-sm mb-3 col-12">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text" for="type">Job Type</label>
+                                </div>
+                                <select class="custom-select col-4" id="type" name="type">
+                                  <option value="all">ALL</option>
+                                  <option value="Full Time">Full Time</option>
+                                  <option value="Part Time">Part Time</option>
+                                  <option value="Internship">Internship</option>
+                                  <option value="others">Others</option>
+                                </select>
+                            </div>
                             <p></p>
-                            <l><label for="industry">Job Industry</label>
-                                <select name="industry" class="btn btn-outline-info" id="industry">
+                            <div class="input-group input-group-sm mb-3 col-12">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text" for="industry">Job Industry</label>
+                                </div>
+                                <select class="custom-select col-4" id="industry" name="industry">
                                     <option value="all">ALL</option>
                                     <option value="Information Technology">Information Technology</option>
                                     <option value="Accounting">Accounting</option>
                                     <option value="Business">Business</option>
                                     <option value="others">Others</option>
-                                </select><br>
-                            </l>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm mb-3 col-12">
+                                <l><input type="submit" value="search"></l>
+                            </div>
                             <p></p>
-                            <l><input type="submit" class="btn btn-outline-info" value="search"></l>
+                            
                         </form>
                        
                         {% for job in jobs %}
