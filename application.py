@@ -397,11 +397,16 @@ def jobDetails():
         form.skills.data = applicant.get('skills')
         form.availability.data = applicant.get('availability')
         
-        return render_template(
-            'job_details.html',
-            job=job,
-            form=form,
-            applicant=applicant)
+        # Check if applicant fill out profile
+        if not (form.apply_address.data and form.apply_name.data and form.apply_phone.data and form.dob.data and form.skills.data and form.availability.data):
+            flash('Please complete profile before apply', 'danger')
+            return redirect(url_for('updateProfile'))
+        else:
+            return render_template(
+                'job_details.html',
+                job=job,
+                form=form,
+                applicant=applicant)
     else:
         applicant = []
         print(job_id)

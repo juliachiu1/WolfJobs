@@ -22,10 +22,8 @@ class RegistrationForm(FlaskForm):
                             validators=[DataRequired()])
     birth = DateField('Date of Birth',
                             format='%Y-%m-%d')
-    skills = StringField('Your Skills',
-                            validators=[DataRequired()])
-    availability = StringField('Availability (hours per day in a week): ',
-                               validators=[DataRequired()])
+    skills = StringField('Your Skills')
+    availability = StringField('Availability (hours per day in a week): ')
     submit = SubmitField('Sign Up')
 
     def validate_email(self, email):
@@ -118,6 +116,6 @@ class updateProfileForm(FlaskForm):
     apply_phone = StringField('Phone Number', validators=[DataRequired(), Length(min=2, max=20)])
     apply_address = StringField('Address', validators=[DataRequired()])
     dob = DateField('Date of Birth', format='%Y-%m-%d')
-    skills = StringField('Your Skills', validators=[DataRequired()])
-    availability = StringField('Availability (hours per day in a week)', validators=[DataRequired()])
+    skills = StringField('Your Skills')
+    availability = StringField('Availability (hours per day in a week)')
     submit = SubmitField('Update')
