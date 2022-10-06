@@ -122,11 +122,11 @@ https://user-images.githubusercontent.com/32348727/194383745-00317174-5511-4777-
 # 2.0 Contributors
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/juliachiu1"><img src="https://avatars.githubusercontent.com/u/112150278?v=4" width="100px;" alt=""/><br /><sub><b>Atharva Patil</b></sub></a></td>
-    <td align="center"><a href="https://github.com/Hsueh-YANG"><img src="https://avatars.githubusercontent.com/u/23623764?v=4" width="100px;" alt=""/><br /><sub><b>Atharva Joshi</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/123standup"><img src="https://avatars.githubusercontent.com/u/59056739?v=4" width="100px;" alt=""/><br /><sub><b>Banpreet Singh</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/Chloe-Ku"><img src="https://avatars.githubusercontent.com/u/60029373?v=4" width="100px;" alt=""/><br /><sub><b>Vaishnavi Patil</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/jackson910210"><img src="https://avatars.githubusercontent.com/u/32348727?v=4" width="100px;" alt=""/><br /><sub><b>Shivam Pednekar</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/juliachiu1"><img src="https://avatars.githubusercontent.com/u/112150278?v=4" width="100px;" alt=""/><br /><sub><b>Chiu, Ching-Lun</b></sub></a></td>
+    <td align="center"><a href="https://github.com/Hsueh-YANG"><img src="https://avatars.githubusercontent.com/u/23623764?v=4" width="100px;" alt=""/><br /><sub><b>Yu, Hsueh-Yang</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/123standup"><img src="https://avatars.githubusercontent.com/u/59056739?v=4" width="100px;" alt=""/><br /><sub><b>Lin, Po-Hsun</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/Chloe-Ku"><img src="https://avatars.githubusercontent.com/u/60029373?v=4" width="100px;" alt=""/><br /><sub><b>Ku, Li-Ling</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/jackson910210"><img src="https://avatars.githubusercontent.com/u/32348727?v=4" width="100px;" alt=""/><br /><sub><b>Chiang, Chen-Hsuan</b></sub></a><br /></td>
   </tr>
 </table>
 
