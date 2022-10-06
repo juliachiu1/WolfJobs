@@ -8,7 +8,7 @@
 ![Version](https://img.shields.io/github/v/tag/Chloe-Ku/WolfJobs)
 ![repo size](https://img.shields.io/github/repo-size/Chloe-Ku/WolfJobs)
 
-# WolfJobs
+# WolfJobs 2.0
 Need a side Hustle or want to get some quick rewards? Wolfjobs provides the perfect platform to meet your requirements.
 
 A job portal which provides recruiters a platform to post temporary job openings and an oppurtunity for candidates to apply for the jobs without being concerned about permanent associations. 
