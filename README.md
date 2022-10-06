@@ -1,11 +1,11 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7154128.svg)](https://doi.org/10.5281/zenodo.7154128)
+![Version](https://img.shields.io/github/v/tag/Chloe-Ku/WolfJobs)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 [![Build Status](https://app.travis-ci.com/atharva1996/WolfJobs.svg?branch=master)](https://app.travis-ci.com/atharva1996/WolfJobs)
 [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
 [![Issues](https://img.shields.io/github/issues/Chloe-Ku/WolfJobs)](https://github.com/Chloe-Ku/WolfJobs/issues)
 [![last commit](https://img.shields.io/github/last-commit/Chloe-Ku/WolfJobs)](https://github.com/Chloe-Ku/WolfJobs/graphs/commit-activity)
-![Version](https://img.shields.io/github/v/tag/Chloe-Ku/WolfJobs)
 ![repo size](https://img.shields.io/github/repo-size/Chloe-Ku/WolfJobs)
 
 # WolfJobs 2.0
