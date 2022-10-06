@@ -12,14 +12,14 @@ Need a side Hustle or want to get some quick rewards? Wolfjobs provides the perf
 
 A job portal which provides recruiters a platform to post temporary job openings and an oppurtunity for candidates to apply for the jobs without being concerned about permanent associations. 
 
-# Why WolfJobs?
-Unlike the Job Portals that display only Permanent job positions, WolfJob focuses on providing Temporary positions to anyone who wants to work for a limited period of time.
+# The Flaws
+The original WolfJobs lacks tons of features, users cannot update their profile, job status won't change, applicants cannot keep track on their favorite jobs...etc
 
-Be it a short-time Technical requirement or hiring a short-term Cashier for a dining place, WolfJobs covers it all! 
-Every user associated with WolfJobs has a choice to Post a job or Apply for a job. WolfJobs provides a universal account for a specific user so that He/She can manage the applications as well as job postings efficiently!
-
-Let's say that a Teaching Assistant is going on a vacation and needs a pair of hands to grade a particular exam having many students. He/She can post a requirement in WolfJobs stating the pay/rewards for the job. 
-Let's assume the same Teaching Assistant has some free time and want to know if there are any temporary requirements for grading any other course. Thus, He/She can search the jobs in WolfJobs and apply for the same. 
+With WolfJobs 2.0 we solved all the problems with these improvements
+1. We added an advanced search mechanism where applicants can filter jobs by their locations, job type or job industry, or you can just search with keywords
+2. We added autofill so that applicant's info will autofill when they are filling out an application
+3. We added support for users to update their profile
+4. Applicants can now save their favorite job and keep track on their application
 
 
 
@@ -80,7 +80,7 @@ https://user-images.githubusercontent.com/89509351/135556679-daf6a3cd-39af-4cb6-
  Step 1: 
   Git Clone the Repository 
   
-    git clone https://github.com/atharva1996/WolfJobs.git 
+    git clone https://github.com/Chloe-Ku/WolfJobs.git
     
   (OR) Download the .zip file on your local machine
   
