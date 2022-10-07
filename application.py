@@ -410,11 +410,12 @@ def jobDetails():
     else:
         applicant = []
         print(job_id)
-        applicants = mongo.db.applier.find({'job_id': ObjectId(job_id), 'status': {'$lt': 2}})
+        # applicants = mongo.db.applier.find({'job_id': ObjectId(job_id), 'status': {'$lt': 2}})
+        applicants = mongo.db.applier.find({'job_id': ObjectId(job_id)})
         for record in applicants:
-            record['email_jobid']=record['email']+' '+job_id;
+            record['email_jobid']=record['email']+' '+job_id
             applicant.append(record)
-        print(applicant)
+        # print(applicant)
         return render_template(
             'job_details.html',
             job=job,
@@ -539,6 +540,7 @@ def doSaveOrRemoveJob():
 def changeJobStatus():
     if request.method == "POST":
         data = request.get_json()
+        print(data)
         mongo.db.applier.update_one({'email': data['email'], 'job_id': ObjectId(data['job_id'])}, [{'$set': {'status': data['status']}}])
     results = {'isSuccess': True}
     return jsonify(results)
