@@ -50,28 +50,13 @@ https://user-images.githubusercontent.com/32348727/194383745-00317174-5511-4777-
 <img width="1200"  src="https://user-images.githubusercontent.com/32348727/194456605-987a7d28-9e3a-4418-82c4-e9d035878f35.png">
 <img width="1200"  src="https://user-images.githubusercontent.com/32348727/194456676-3f73b123-2d40-470a-817d-2ab0963c5cc7.png">
 
-### Manager dashboard
+### Applicants can keep track on their application
 
-<img width="1200"  src="https://user-images.githubusercontent.com/89509351/135366752-fa9230c3-5377-4b1f-b413-d84e21784007.png">
+<img width="1200"  src="https://user-images.githubusercontent.com/32348727/194457069-dca81b64-7b7a-452e-a771-942d62e4ce89.png">
 
-### Student dashboard
+### Applicants can save their favorite jobs
 
-<img width="1200"  src="https://user-images.githubusercontent.com/62328699/135398595-db44e897-0835-4532-ac29-aabd414b917a.png">
-     
-### Student Application form
-
-<img width="1200"  src="https://user-images.githubusercontent.com/89509351/135366907-8682f8d9-d8e2-4138-aa53-9f11660f333a.png">
-
-### Check for jobs applied
-
-<img width="1200"  src="https://user-images.githubusercontent.com/89509351/135367040-26503123-8a21-465e-ad5d-818f8682ac68.png">
-     
-### Manager's dashboard to select the right candidate
-
-<img width="1200"  src="https://user-images.githubusercontent.com/89509351/135367153-63917738-9c09-4703-81dd-bcf49d86d973.png">
-
-
-
+<img width="1200"  src="https://user-images.githubusercontent.com/32348727/194457186-c42d7e29-06d1-425f-9b62-67a9ba68d30b.png">
 
 
 
