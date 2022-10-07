@@ -32,13 +32,13 @@
 | Evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people)                               | 0       |                                                                                                                |
 | Evidence that the whole team is using the same tools (e.g. tutor can ask anyone to share screen, they demonstrate the system running on their computer) | 0       |                                                                                                                |
 | Evidence that the members of the team are working across multiple places in the code base                                                               | 0       |                                                                                                                |
-| Short release cycles                                                                                                                                    | 0       | |
-| Does your website and documentation provide a clear, high-level overview of your software?                                                                                          | 0       | |
-| Does your website and documentation clearly describe the type of user who should use your software?                                                                                          | 0       | |
-| Do you publish case studies to show how your software has been used by yourself and others?                                                                                         | 0       | |
-| Is the name of your project/software unique?                                                                                                           | 0       | |
+| Short release cycles                                                                                                                                    | 0       |
+| Does your website and documentation provide a clear, high-level overview of your software?                                                                                          | 0       |
+| Does your website and documentation clearly describe the type of user who should use your software?                                                                                          | 0       |
+| Do you publish case studies to show how your software has been used by yourself and others?                                                                                         | 0       |
+| Is the name of your project/software unique?                                                                                                           | 0       |
 | Is your project/software name free from trademark violations?
-| 0       | |
-| Is your software available as a package that can be deployed without building it?                                                                                          | 0       | |
+| 0       |
+| Is your software available as a package that can be deployed without building it?                                                                                          | 0       |
 | Is your software available for free?
-| 0       | |
+| 0       |
