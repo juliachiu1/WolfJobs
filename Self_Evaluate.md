@@ -37,8 +37,7 @@
 | Does your website and documentation clearly describe the type of user who should use your software?                                                                                          | 0       ||
 | Do you publish case studies to show how your software has been used by yourself and others?                                                                                         | 0       ||
 | Is the name of your project/software unique?                                                                                                           | 0       ||
-| Is your project/software name free from trademark violations?
-| 0       ||
-| Is your software available as a package that can be deployed without building it?                                                                                          | 0       ||
-| Is your software available for free?
-| 0       ||
+| Is your project/software name free from trademark violations?                                                                                          | 0       ||
+| Is your software available as a package that can be deployed without building it?                                                                                        | 0       ||
+| Is your software available for free?                                                                                                                    | 0       ||
+
