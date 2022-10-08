@@ -455,13 +455,16 @@ def selectApplicant():
 # Output: Applicant is selected (database updated) and page redirected to dashboard
 # ########################## 
     job_id = request.args.get("job_id")
+    job = mongo.db.jobs.find_one({'_id': ObjectId(job_id)}, {'_id': 0, 'job_title': 1})
     applicant_id = request.args.get("applicant_id")
-    email=request.args.get("email")
-    print('email: '+email)
-    # print(job_id, applicant_id)
+    email = request.args.get("email")
+    applicant = mongo.db.ath.find_one({'email': email}, {'_id': 0, 'legal_name': 1})
     mongo.db.jobs.update_one({'_id': ObjectId(job_id)}, {
-                         '$set': {"selected": applicant_id}})
+        '$set': {"selected": applicant_id}})
     mongo.db.applier.update_one({'email': email, 'job_id': ObjectId(job_id)}, [{'$set': {'status': 2}}])
+    # Send interview invitation to selected applicants
+    smtp_mail = Sendemail()
+    smtp_mail.send_mail_interview(email, job['job_title'], applicant['legal_name'])
     return redirect(url_for('dashboard'))
 
 @app.route("/rejectApplicant", methods=['GET', 'POST'])
@@ -475,8 +478,12 @@ def rejectApplicant():
 # ########################## 
     job_id = request.args.get("job_id")
     applicant_id = request.args.get("applicant_id")
-    email=request.args.get("email")
+    email = request.args.get("email")
+    applicant = mongo.db.ath.find_one({'email': email}, {'_id': 0, 'legal_name': 1})
     mongo.db.applier.update_one({'email': email, 'job_id': ObjectId(job_id)}, [{'$set': {'status': 3}}])
+    # Send reject mail to selected applicants
+    smtp_mail = Sendemail()
+    smtp_mail.send_mail_reject(email, applicant['legal_name'])
     return redirect(url_for('dashboard'))
 
 
