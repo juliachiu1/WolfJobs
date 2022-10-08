@@ -16,6 +16,7 @@ import bcrypt
 #from apps import App
 from flask_login import LoginManager, login_required
 from bson.objectid import ObjectId
+from sendmail import Sendemail
 import database
 
 app = Flask(__name__)
@@ -85,6 +86,9 @@ def register():
                     'phone': phone, 'address': address, 'birth': birth, 'skills': skills, 'availability': availability})
 
                 mongo.db.savedJobs.insert_one({'email': email, 'savedJobs': []})
+                # Send alerting email after completing registration
+                smtp_mail = Sendemail()
+                smtp_mail.send_mail_regis(email, name)
             flash(f'Account created for {form.username.data}!', 'success')
             return redirect(url_for('home'))
     else:
@@ -158,11 +162,9 @@ def forgotPassword():
                 f = ForgotPasswordForm()
                 return render_template('forgotpassword.html', form=f)
             if temp['email'] == form.email.data:
-                util = Utilities()
-                if not util.send_email(form.email.data) == "success":
-                    flash('Email has been sent successfully!', 'success')
-                    return redirect(url_for("login"))
-                return "Failed"
+                sendmail = Sendemail()
+                sendmail.send_mail_forget_password(form.email.data)
+                return redirect(url_for("login"))
             else:
                 flash('Incorrect email id', 'danger')
 
@@ -170,7 +172,12 @@ def forgotPassword():
 
     else:
         return redirect(url_for('home'))
-
+    
+@app.route("/resetpassword", methods=['POST', 'GET'])
+def resetPassword():
+    form = ResetPasswordForm()
+    print(session.get('email'))
+    return render_template("resetpassword.html", form=form)
 
 @app.route("/posting", methods=['GET', 'POST'])
 def posting():
@@ -384,6 +391,9 @@ def jobDetails():
                     'status': 0})
             mongo.db.jobs.update_one({'_id': ObjectId(job_id)}, {
                                  '$push': {'Appliers': session['email']}})
+            # Send alerting email after applying a job
+            smtp_mail = Sendemail()
+            smtp_mail.send_mail_apply(email, apply_name, job['job_title'])
         flash('Successfully Applied to the job!', 'success')
         return redirect(url_for('dashboard'))
 
@@ -431,7 +441,7 @@ def deleteJob():
 # Output: particular job with job_id removed and page redirected to dashboard
 # ########################## 
     job_id = request.args.get("job_id")
-    id = mongo.db.jobs.remove({'_id': ObjectId(job_id)})
+     id = mongo.db.jobs.delete_one({'_id': ObjectId(job_id)})
     return redirect(url_for('dashboard'))
 
 
