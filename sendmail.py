@@ -87,9 +87,9 @@ class Sendemail:
             smtp.login(self.gmail_address, self.gmail_password)
             smtp.send_message(msg)
 
-    def send_mail_interview(self, interview_mail, name):
+    def send_mail_interview(self, interview_mail, interview_job, interview_name):
         msg = EmailMessage()
-        msg['Subject'] = 'Job Applied Confirmation Letter'
+        msg['Subject'] = 'Job Interview Confirmation Letter'
         msg['From'] = self.gmail_address
         msg['To'] = interview_mail
 
@@ -101,20 +101,20 @@ class Sendemail:
                                    <div style="height: 500px;width:800px">
                                        <div style="text-align:left;">
                                            <p>Dear {}, 
-                                           <br><br> Thank you for your application for the [position title] position 
-                                           at [company name]. 
+                                           <br><br> Thank you for your application for the {} position 
+                                           at AA Company. 
                                            <br>
                                            We are impressed by your background and think that your qualifications 
                                            make you an excellent candidate for this role. We would like to invite 
-                                           you to interview [at our office / via Skype / via phone].
+                                           you to interview at our office.
                                            <br><br>
                                            During the interview, you will have the opportunity to learn more about the 
                                            role at hand and our company. We, of course, will have the pleasure of 
                                            getting to know more about you and your background and whether this position 
                                            aligns with your professional goals.
                                            <br><br>
-                                           If you have any questions before the interview, please contact me at 
-                                           [add phone number] or at [add email address]. I look forward to meeting you.
+                                           If you have any questions before the interview, please do not hesitate to 
+                                           contact me. I look forward to meeting you.
                                            <br><br>
                                            Sincerely,
                                            <br><br>
@@ -125,16 +125,16 @@ class Sendemail:
                                </div>
                            </body>
                        </html>
-                       '''.format(name)
+                       '''.format(interview_name, interview_job)
         msg.set_content(msg_content, subtype='html')
 
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
             smtp.login(self.gmail_address, self.gmail_password)
             smtp.send_message(msg)
 
-    def send_mail_reject(self, reject_mail):
+    def send_mail_reject(self, reject_mail, reject_name):
         msg = EmailMessage()
-        msg['Subject'] = 'Job Applied Confirmation Letter'
+        msg['Subject'] = 'Job Rejection Letter'
         msg['From'] = self.gmail_address
         msg['To'] = reject_mail
 
@@ -169,7 +169,7 @@ class Sendemail:
                                </div>
                            </body>
                        </html>
-                       '''
+                       '''.format(reject_name)
         msg.set_content(msg_content, subtype='html')
 
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
