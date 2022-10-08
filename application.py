@@ -16,6 +16,7 @@ import bcrypt
 #from apps import App
 from flask_login import LoginManager, login_required
 from bson.objectid import ObjectId
+from sendmail import Sendemail
 import database
 
 app = Flask(__name__)
@@ -85,6 +86,9 @@ def register():
                     'phone': phone, 'address': address, 'birth': birth, 'skills': skills, 'availability': availability})
 
                 mongo.db.savedJobs.insert_one({'email': email, 'savedJobs': []})
+                # Send alerting email after completing registration
+                smtp_mail = Sendemail()
+                smtp_mail.send_mail_regis(email, name)
             flash(f'Account created for {form.username.data}!', 'success')
             return redirect(url_for('home'))
     else:
@@ -158,11 +162,9 @@ def forgotPassword():
                 f = ForgotPasswordForm()
                 return render_template('forgotpassword.html', form=f)
             if temp['email'] == form.email.data:
-                util = Utilities()
-                if not util.send_email(form.email.data) == "success":
-                    flash('Email has been sent successfully!', 'success')
-                    return redirect(url_for("login"))
-                return "Failed"
+                sendmail = Sendemail()
+                sendmail.send_mail_forget_password(form.email.data)
+                return redirect(url_for("login"))
             else:
                 flash('Incorrect email id', 'danger')
 
@@ -170,7 +172,12 @@ def forgotPassword():
 
     else:
         return redirect(url_for('home'))
-
+    
+@app.route("/resetpassword", methods=['POST', 'GET'])
+def resetPassword():
+    form = ResetPasswordForm()
+    print(session.get('email'))
+    return render_template("resetpassword.html", form=form)
 
 @app.route("/posting", methods=['GET', 'POST'])
 def posting():
@@ -384,6 +391,9 @@ def jobDetails():
                     'status': 0})
             mongo.db.jobs.update_one({'_id': ObjectId(job_id)}, {
                                  '$push': {'Appliers': session['email']}})
+            # Send alerting email after applying a job
+            smtp_mail = Sendemail()
+            smtp_mail.send_mail_apply(email, apply_name, job['job_title'])
         flash('Successfully Applied to the job!', 'success')
         return redirect(url_for('dashboard'))
 
@@ -431,7 +441,7 @@ def deleteJob():
 # Output: particular job with job_id removed and page redirected to dashboard
 # ########################## 
     job_id = request.args.get("job_id")
-    id = mongo.db.jobs.remove({'_id': ObjectId(job_id)})
+    id = mongo.db.jobs.delete_one({'_id': ObjectId(job_id)})
     return redirect(url_for('dashboard'))
 
 
@@ -445,13 +455,16 @@ def selectApplicant():
 # Output: Applicant is selected (database updated) and page redirected to dashboard
 # ########################## 
     job_id = request.args.get("job_id")
+    job = mongo.db.jobs.find_one({'_id': ObjectId(job_id)}, {'_id': 0, 'job_title': 1})
     applicant_id = request.args.get("applicant_id")
-    email=request.args.get("email")
-    print('email: '+email)
-    # print(job_id, applicant_id)
+    email = request.args.get("email")
+    applicant = mongo.db.ath.find_one({'email': email}, {'_id': 0, 'legal_name': 1})
     mongo.db.jobs.update_one({'_id': ObjectId(job_id)}, {
-                         '$set': {"selected": applicant_id}})
+        '$set': {"selected": applicant_id}})
     mongo.db.applier.update_one({'email': email, 'job_id': ObjectId(job_id)}, [{'$set': {'status': 2}}])
+    # Send interview invitation to selected applicants
+    smtp_mail = Sendemail()
+    smtp_mail.send_mail_interview(email, job['job_title'], applicant['legal_name'])
     return redirect(url_for('dashboard'))
 
 @app.route("/rejectApplicant", methods=['GET', 'POST'])
@@ -465,8 +478,12 @@ def rejectApplicant():
 # ########################## 
     job_id = request.args.get("job_id")
     applicant_id = request.args.get("applicant_id")
-    email=request.args.get("email")
+    email = request.args.get("email")
+    applicant = mongo.db.ath.find_one({'email': email}, {'_id': 0, 'legal_name': 1})
     mongo.db.applier.update_one({'email': email, 'job_id': ObjectId(job_id)}, [{'$set': {'status': 3}}])
+    # Send reject mail to selected applicants
+    smtp_mail = Sendemail()
+    smtp_mail.send_mail_reject(email, applicant['legal_name'])
     return redirect(url_for('dashboard'))
 
 
