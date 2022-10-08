@@ -441,7 +441,7 @@ def deleteJob():
 # Output: particular job with job_id removed and page redirected to dashboard
 # ########################## 
     job_id = request.args.get("job_id")
-     id = mongo.db.jobs.delete_one({'_id': ObjectId(job_id)})
+    id = mongo.db.jobs.delete_one({'_id': ObjectId(job_id)})
     return redirect(url_for('dashboard'))
 
 
