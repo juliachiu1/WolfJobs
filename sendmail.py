@@ -4,8 +4,8 @@ from email.message import EmailMessage
 
 class Sendemail:
     def __init__(self):
-        self.gmail_address = 'hyu25@ncsu.edu'
-        self.gmail_password = 'csqplxjxptcymcyz'
+        self.gmail_address = 'csc510demo841231@gmail.com'
+        self.gmail_password = 'pfkcqvblqqvqtvig'
         self.sent_name = 'WolfJobs'
 
     def send_mail_regis(self, regis_mail, name):
