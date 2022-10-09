@@ -107,7 +107,7 @@ https://user-images.githubusercontent.com/89509351/135556679-daf6a3cd-39af-4cb6-
 
   3.	**Resume Upload** – In Phase 2 of Wolf Job, user can even upload Resume / CV and cover letter for any particular job. Uploading resume will be very helpful for the hiring manager to get a better idea about an applicant’s background and profile.
 
-  4.	**Interview Appointment Scheduling** – In future phase 3, Wolf Job will also provide the facility for the hiring manager to organize an interview appointment for the job based on applicant’s availability and convenient time uploaded by the hiring manager. Either of the users can upload their availability time in the G-sheet and using google calendar appointments can be organised.
+  4.	**Interview Appointment Scheduling** – In future phase 2, Wolf Job will also provide the facility for the hiring manager to organize an interview appointment for the job based on applicant’s availability and convenient time uploaded by the hiring manager. Either of the users can upload their availability time in the G-sheet and using google calendar appointments can be organised.
 
  
  
