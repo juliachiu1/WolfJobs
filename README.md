@@ -13,7 +13,7 @@ Need a side Hustle or want to get some quick rewards? Wolfjobs provides the perf
 
 A job portal which provides recruiters a platform to post temporary job openings and an oppurtunity for candidates to apply for the jobs without being concerned about permanent associations. 
 
-# The Flaws
+# New Features
 The original WolfJobs lacks tons of features, users cannot update their profile, job status won't change, applicants cannot keep track on their favorite jobs...etc
 
 With WolfJobs 2.0 we solved all the problems with these improvements
