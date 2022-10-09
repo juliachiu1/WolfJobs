@@ -25,13 +25,13 @@ With WolfJobs 2.0 we solved all the problems with these improvements
 
 
 
-# Watch this video to know more about WolfJobs 2.0:
+# Watch this video to know more about WolfJobs 2.0
 
 
 https://user-images.githubusercontent.com/32348727/194764600-6a1e6e11-254a-4056-b267-7f50114de559.mp4
 
 
-# Watch this video to know more about original WolfJobs:
+# Watch this video to know more about original WolfJobs
 
 
 https://user-images.githubusercontent.com/89509351/135556679-daf6a3cd-39af-4cb6-8b81-36522edb3889.mp4
@@ -100,7 +100,7 @@ https://user-images.githubusercontent.com/89509351/135556679-daf6a3cd-39af-4cb6-
 
   The future scope of Wolf Job includes various functionalities as stated below defined in 2 phases
 
-  ### Phase 2:
+  ### Phase 2
   1.	**Job Analysis** – In phase 2, wolf Job will provide the functionality of analysing various aspects of a job. Job Analysis based on various parameters using graphical representation will help in making prediction on which jobs are more preferred and for which jobs applicants have more inclination. Hiring managers can then decide what rewards and salary to be given to the applicants of that job. Even applicants will get to know, which job is being preferred among other applicants.
 
   2.	**Chatbot Integration** – Our platform Wolf Job will also provide the functionality of Chatbot integrated with our website so that user can easily interact with the bot and get to know about various features of our web application and have a nice interactive experience.
