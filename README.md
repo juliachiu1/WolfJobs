@@ -101,7 +101,7 @@ https://user-images.githubusercontent.com/89509351/135556679-daf6a3cd-39af-4cb6-
   The future scope of Wolf Job includes various functionalities as stated below defined in 2 phases
 
   ### Phase 2:
-  1.	**Job Analysis** – In phase 3, wolf Job will provide the functionality of analysing various aspects of a job. Job Analysis based on various parameters using graphical representation will help in making prediction on which jobs are more preferred and for which jobs applicants have more inclination. Hiring managers can then decide what rewards and salary to be given to the applicants of that job. Even applicants will get to know, which job is being preferred among other applicants.
+  1.	**Job Analysis** – In phase 2, wolf Job will provide the functionality of analysing various aspects of a job. Job Analysis based on various parameters using graphical representation will help in making prediction on which jobs are more preferred and for which jobs applicants have more inclination. Hiring managers can then decide what rewards and salary to be given to the applicants of that job. Even applicants will get to know, which job is being preferred among other applicants.
 
   2.	**Chatbot Integration** – Our platform Wolf Job will also provide the functionality of Chatbot integrated with our website so that user can easily interact with the bot and get to know about various features of our web application and have a nice interactive experience.
 
