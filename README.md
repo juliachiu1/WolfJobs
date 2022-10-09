@@ -20,7 +20,7 @@ With WolfJobs 2.0 we solved all the problems with these improvements
 1. We added an advanced search mechanism where applicants can filter jobs by their locations, job type or job industry, or you can just search with keywords
 2. We added autofill so that applicant's info will autofill when they are filling out an application
 3. We added support for users to update their profile
-4. Applicants can now save their favorite job and keep track on their application
+4. Applicants can now save their favorite job and keep track on their application through email
 
 
 
@@ -28,7 +28,7 @@ With WolfJobs 2.0 we solved all the problems with these improvements
 # Watch this video to know more about WolfJobs 2.0:
 
 
-https://user-images.githubusercontent.com/32348727/194383745-00317174-5511-4777-afe9-7d02551d92c9.mp4
+https://user-images.githubusercontent.com/32348727/194764600-6a1e6e11-254a-4056-b267-7f50114de559.mp4
 
 
 # Watch this video to know more about original WolfJobs:
@@ -64,9 +64,10 @@ https://user-images.githubusercontent.com/89509351/135556679-daf6a3cd-39af-4cb6-
 
 <img width="1200"  src="https://user-images.githubusercontent.com/32348727/194457186-c42d7e29-06d1-425f-9b62-67a9ba68d30b.png">
 
+### Email support
 
-
-
+<img width="1200"  src="https://user-images.githubusercontent.com/32348727/194764449-cfda29c4-e39f-4724-98ff-96dc7c63451c.png">
+<img width="1200"  src="https://user-images.githubusercontent.com/32348727/194764488-022ee9c0-f49c-4523-b45c-68d1359d1786.png">
 
 
 # Installation Guide
