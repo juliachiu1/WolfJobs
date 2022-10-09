@@ -79,7 +79,7 @@ https://user-images.githubusercontent.com/89509351/135556679-daf6a3cd-39af-4cb6-
     
   (OR) Download the .zip file on your local machine
   
-    https://github.com/atharva1996/WolfJobs.git
+    https://github.com/Chloe-Ku/WolfJobs.git
   
  Step 2:
    Install the required packages by running the following command in the terminal 
